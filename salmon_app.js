@@ -15,17 +15,15 @@ var randomNumOfCustomers = Math.floor(Math.random() * 150);
 
 // 1.  1st and Pike shop object literal
 var firstAndPike = {
-  shopInfo: ['minCustomers', 'maxCustomers', ]
+//   shopInfo: ['minCustomers', 'maxCustomers', 'avgNumOfCookiesPurchased'],
   
-  minCustomers: ,
-  maxCustomers: ,
-  avgCookiesPerCustomer: 
-}
+//   minCustomers: ,
+//   maxCustomers: ,
+//   avgCookiesPerCustomer: 
+// }
 
 
 // 2.  SeaTac Airport   shop object literal
 // 3. Seattle Center shop object literal
 // 4. Capital Hill shop object literal
 // 5. Ali  shop object literal
-
-
