@@ -15,15 +15,30 @@ var randomNumOfCustomers = Math.floor(Math.random() * 150);
 
 // 1.  1st and Pike shop object literal
 var firstAndPike = {
-//   shopInfo: ['minCustomers', 'maxCustomers', 'avgNumOfCookiesPurchased'],
-  
+  customers: [randomNumOfCustomers, randomNumOfCustomers,],
+//   shopInfo: ['minCustomers', 'maxCustomers', 'avgNumOfCookiesPurchased']
+render: function () {
+  var ulEl = document.getElementById('firstAndPikeShop');
+
+  for (var i = 0; i < hoursOfOperation.length; i++) {
+    // 1. create a list of items (create the element)
+    var liEl = document.createElement('li');
+    // 2. give the li element content
+    liEl.textContent = this.customers[i];
+    // 3. append the li to the ul (append the element to the DOM)
+    ulEl.appendChild(liEl);
+  }
+
+}  
 //   minCustomers: ,
 //   maxCustomers: ,
 //   avgCookiesPerCustomer: 
-// }
+}
 
 
 // 2.  SeaTac Airport   shop object literal
 // 3. Seattle Center shop object literal
 // 4. Capital Hill shop object literal
 // 5. Ali  shop object literal
+
+firstAndPike.render();
