@@ -10,6 +10,9 @@
 // all shops are open from 6am to 8pm so I made it a global variable
 var hoursOfOperation = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm']; 
 
+// need the number of customers each hour, so let's make a random number generator
+var randomNumOfCustomers = Math.floor(Math.random() * 150);
+
 // 1.  1st and Pike shop object literal
 var firstAndPike = {
   shopInfo: ['minCustomers', 'maxCustomers', ]
