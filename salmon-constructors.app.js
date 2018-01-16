@@ -26,7 +26,7 @@ function Store(sixAm, sevenAm, eightAm, nineAm, tenAm, elevenAm, twelvePm, onePm
 }
 
 // Let's refactor so that render() method is on the constructor's prototype; this will tidy up the way things look on the screen
-Dog.prototype.render = function () {
+Store.prototype.render = function () {
   // create tr
   var trEl = document.createElement('tr');
   // create td
@@ -49,42 +49,86 @@ Dog.prototype.render = function () {
   tdEl.textContent = this.nickname;
   trEl.appendChild(tdEl);
 
-  dogTable.appendChild(trEl);
+  storeTable.appendChild(trEl);
 };
 
 // We need a separate function to make the table header
 function makeHeaderRow() {
   var trEl = document.createElement('tr');
   var thEl = document.createElement('th');
-  thEl.textContent = 'Name';
+  thEl.textContent = '6:00am';
   trEl.appendChild(thEl);
 
   var thEl = document.createElement('th');
-  thEl.textContent = 'Color';
+  thEl.textContent = '7:00am';
   trEl.appendChild(thEl);
 
   var thEl = document.createElement('th');
-  thEl.textContent = 'Breed';
+  thEl.textContent = '8:00am';
   trEl.appendChild(thEl);
 
   var thEl = document.createElement('th');
-  thEl.textContent = 'Nickname';
+  thEl.textContent = '9:00am';
   trEl.appendChild(thEl);
 
-  dogTable.appendChild(trEl);
+  var thEl = document.createElement('th');
+  thEl.textContent = '10:00am';
+  trEl.appendChild(thEl);
+
+  var thEl = document.createElement('th');
+  thEl.textContent = '11:00am';
+  trEl.appendChild(thEl);
+
+  var thEl = document.createElement('th');
+  thEl.textContent = '12:00pm';
+  trEl.appendChild(thEl);
+
+  var thEl = document.createElement('th');
+  thEl.textContent = '1:00pm';
+  trEl.appendChild(thEl);
+
+  var thEl = document.createElement('th');
+  thEl.textContent = '2:00pm';
+  trEl.appendChild(thEl);
+
+  var thEl = document.createElement('th');
+  thEl.textContent = '3:00pm';
+  trEl.appendChild(thEl);
+
+  var thEl = document.createElement('th');
+  thEl.textContent = '4:00pm';
+  trEl.appendChild(thEl);
+
+  var thEl = document.createElement('th');
+  thEl.textContent = '5:00pm';
+  trEl.appendChild(thEl);
+
+  var thEl = document.createElement('th');
+  thEl.textContent = '6:00pm';
+  trEl.appendChild(thEl);
+
+  var thEl = document.createElement('th');
+  thEl.textContent = '7:00pm';
+  trEl.appendChild(thEl);
+
+  var thEl = document.createElement('th');
+  thEl.textContent = '8:00pm';
+  trEl.appendChild(thEl);
+
+  storeTable.appendChild(trEl);
 }
 
 // We need to create our Dog instances
-var gary = new Dog('Gary', 'White', 'Westie', 'Gare Bear');
-var charlotte = new Dog('Charlotte', 'White', 'Westie', 'Goose');
-var ollie = new Dog('Ollivander', 'Tan', 'French Bulldog', 'Ollie');
-var buddy = new Dog('Buddy', 'Black', 'Labra-doodle', '');
-var demi = new Dog('Demi', 'Black and White', 'Border Collie', null);
+var firstAndPike = new Store('Gary', 'White', 'Westie', 'Gare Bear');
+var seaTacAirport = new Store('Charlotte', 'White', 'Westie', 'Goose');
+var seattleCenter = new Store('Ollivander', 'Tan', 'French Bulldog', 'Ollie');
+var capitolHill = new Store('Buddy', 'Black', 'Labra-doodle', '');
+var alki = new Store('Demi', 'Black and White', 'Border Collie', null);
 
 // Now we need to call our functions: the one for the header row, and the one for generating the individual dog rows
 makeHeaderRow();
-gary.render();
-charlotte.render();
-ollie.render();
-buddy.render();
-demi.render();
+firstAndPike.render();
+seaTacAirport.render();
+seattleCenter.render();
+capitolHill.render();
+alki.render();
