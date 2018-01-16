@@ -32,21 +32,65 @@ Store.prototype.render = function () {
   // create td
   var tdEl = document.createElement('td');
   // give td content (name, then color, then breed, the nickname) <- eventually do it in a for loop
-  tdEl.textContent = this.name;
+  tdEl.textContent = this.sixAm;
   // append td to tr
   trEl.appendChild(tdEl);
   // append tr to table
 
   tdEl = document.createElement('td');
-  tdEl.textContent = this.color;
+  tdEl.textContent = this.sevenAm;
   trEl.appendChild(tdEl);
 
   tdEl = document.createElement('td');
-  tdEl.textContent = this.breed;
+  tdEl.textContent = this.eightAm;
   trEl.appendChild(tdEl);
 
   tdEl = document.createElement('td');
-  tdEl.textContent = this.nickname;
+  tdEl.textContent = this.nineAm;
+  trEl.appendChild(tdEl);
+
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.tenAm;
+  trEl.appendChild(tdEl);
+
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.elevenAm;
+  trEl.appendChild(tdEl);
+
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.twelvePm;
+  trEl.appendChild(tdEl);
+
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.onePm;
+  trEl.appendChild(tdEl);
+
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.twoPm;
+  trEl.appendChild(tdEl);
+
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.threePm;
+  trEl.appendChild(tdEl);
+
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.fourPm;
+  trEl.appendChild(tdEl);
+
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.fivePm;
+  trEl.appendChild(tdEl);
+
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.sixPm;
+  trEl.appendChild(tdEl);
+
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.sevenPm;
+  trEl.appendChild(tdEl);
+
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.eightPm;
   trEl.appendChild(tdEl);
 
   storeTable.appendChild(trEl);
