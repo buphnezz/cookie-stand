@@ -17,21 +17,38 @@ var maxNumberCookies = Math.floor(Math.random() * (150 - 51));
 var avgNumCookiesPurchased = Math.ceil(Math.random()) * (3 - 1);
 
 // need the number of customers each hour, so let's make a random number generator
-var randomNumOfCustomers = Math.floor(Math.random() * 150);
-var randomNumOfCustomers2 = Math.floor(Math.random() * 150);
-var randomNumOfCustomers3 = Math.floor(Math.random() * 150);
-var randomNumOfCustomers4 = Math.floor(Math.random() * 150);
-var randomNumOfCustomers5 = Math.floor(Math.random() * 150);
-var randomNumOfCustomers6 = Math.floor(Math.random() * 150);
-var randomNumOfCustomers7 = Math.floor(Math.random() * 150);
-var randomNumOfCustomers8 = Math.floor(Math.random() * 150);
-var randomNumOfCustomers9 = Math.floor(Math.random() * 150);
-var randomNumOfCustomers10 = Math.floor(Math.random() * 150);
-var randomNumOfCustomers11 = Math.floor(Math.random() * 150);
-var randomNumOfCustomers12 = Math.floor(Math.random() * 150);
-var randomNumOfCustomers13 = Math.floor(Math.random() * 150);
-var randomNumOfCustomers14 = Math.floor(Math.random() * 150);
-var randomNumOfCustomers15 = Math.floor(Math.random() * 150);
+// need avg number of customers per hour * avg number of cookie purchased
+var minNumOfCustomersSixAm = Math.floor(Math.random() * (50 - 0));
+var maxNumOfCustomersSixAm = Math.floor(Math.random() * (150 - 51));
+var minNumOfCustomersSevenAm = Math.floor(Math.random() * (50 - 0));
+var maxNumOfCustomersSevenAm = Math.floor(Math.random() * (150 - 51));
+var minNumOfCustomersEightAm = Math.floor(Math.random() * (50 - 0));
+var maxNumOfCustomersEightAm = Math.floor(Math.random() * (150 - 51));
+var minNumOfCustomersNineAm = Math.floor(Math.random() * (50 - 0));
+var maxNumOfCustomersNineAm = Math.floor(Math.random() * (150 - 51));
+var minNumOfCustomersTenAm = Math.floor(Math.random() * (50 - 0));
+var maxNumOfCustomersTenaAm = Math.floor(Math.random() * (150 - 51));
+var minNumOfCustomersElevenAm = Math.floor(Math.random() * (50 - 0));
+var maxNumOfCustomersElevenAm = Math.floor(Math.random() * (150 - 51));
+var minNumOfCustomersTwelevePm = Math.floor(Math.random() * (50 - 0));
+var maxNumOfCustomersTwelvePm = Math.floor(Math.random() * (150 - 51));
+var minNumOfCustomersOnePm = Math.floor(Math.random() * (50 - 0));
+var maxNumOfCustomersOnePm = Math.floor(Math.random() * (150 - 51));
+var minNumOfCustomersTwoPm = Math.floor(Math.random() * (50 - 0));
+var maxNumOfCustomersTwoPm = Math.floor(Math.random() * (150 - 51));
+var minNumOfCustomersThreePm = Math.floor(Math.random() * (50 - 0));
+var maxNumOfCustomersThreePm = Math.floor(Math.random() * (150 - 51));
+var minNumOfCustomersFourPm = Math.floor(Math.random() * (50 - 0));
+var maxNumOfCustomersFourPm = Math.floor(Math.random() * (150 - 51));
+var minNumOfCustomersFivePm = Math.floor(Math.random() * (50 - 0));
+var maxNumOfCustomersFivePm = Math.floor(Math.random() * (150 - 51));
+var minNumOfCustomersSixPm = Math.floor(Math.random() * (50 - 0));
+var maxNumOfCustomersSixPm = Math.floor(Math.random() * (150 - 51));
+var minNumOfCustomersSevenPm = Math.floor(Math.random() * (50 - 0));
+var maxNumOfCustomersSevenPm = Math.floor(Math.random() * (150 - 51));
+var minNumOfCustomersEightPm = Math.floor(Math.random() * (50 - 0));
+var maxNumOfCustomersEightPm = Math.floor(Math.random() * (150 - 51));
+
 
 // 1.  1st and Pike shop object literal
 var firstAndPike = {
