@@ -53,10 +53,20 @@ var maxNumOfCustomersEightPm = Math.floor(Math.random() * (150 - 51) + 50);
 
 // 1.  1st and Pike shop object literal
 var firstAndPike = {
-  customers: [(maxNumOfCustomersSixAm - minNumOfCustomersSixAm) * avgNumCookiesPurchased, (maxNumOfCustomersSevenAm - minNumOfCustomersSevenAm) * avgNumCookiesPurchased, (maxNumOfCustomersEightAm - minNumOfCustomersEightAm) * avgNumCookiesPurchased, (maxNumOfCustomersNineAm - minNumOfCustomersNineAm) * avgNumCookiesPurchased, (maxNumOfCustomersTenAm - minNumOfCustomersTenAm) * avgNumCookiesPurchased, (maxNumOfCustomersElevenAm - minNumOfCustomersElevenAm) * avgNumCookiesPurchased, (maxNumOfCustomersTwelvePm - minNumOfCustomersTwelvePm) * avgNumCookiesPurchased, (maxNumOfCustomersOnePm - minNumOfCustomersOnePm) * avgNumCookiesPurchased, (maxNumOfCustomersTwoPm - minNumOfCustomersTwoPm) * avgNumCookiesPurchased, (maxNumOfCustomersThreePm - minNumOfCustomersThreePm) * avgNumCookiesPurchased, (maxNumOfCustomersFourPm - minNumOfCustomersFourPm) * avgNumCookiesPurchased, (maxNumOfCustomersFivePm - minNumOfCustomersFivePm) * avgNumCookiesPurchased, (maxNumOfCustomersSixPm - minNumOfCustomersSixPm) * avgNumCookiesPurchased, (maxNumOfCustomersSevenPm - minNumOfCustomersSevenPm) * avgNumCookiesPurchased, (maxNumOfCustomersEightPm - minNumOfCustomersEightPm) * avgNumCookiesPurchased],
+  // customers: [(maxNumOfCustomersSixAm - minNumOfCustomersSixAm) * avgNumCookiesPurchased, (maxNumOfCustomersSevenAm - minNumOfCustomersSevenAm) * avgNumCookiesPurchased, (maxNumOfCustomersEightAm - minNumOfCustomersEightAm) * avgNumCookiesPurchased, (maxNumOfCustomersNineAm - minNumOfCustomersNineAm) * avgNumCookiesPurchased, (maxNumOfCustomersTenAm - minNumOfCustomersTenAm) * avgNumCookiesPurchased, (maxNumOfCustomersElevenAm - minNumOfCustomersElevenAm) * avgNumCookiesPurchased, (maxNumOfCustomersTwelvePm - minNumOfCustomersTwelvePm) * avgNumCookiesPurchased, (maxNumOfCustomersOnePm - minNumOfCustomersOnePm) * avgNumCookiesPurchased, (maxNumOfCustomersTwoPm - minNumOfCustomersTwoPm) * avgNumCookiesPurchased, (maxNumOfCustomersThreePm - minNumOfCustomersThreePm) * avgNumCookiesPurchased, (maxNumOfCustomersFourPm - minNumOfCustomersFourPm) * avgNumCookiesPurchased, (maxNumOfCustomersFivePm - minNumOfCustomersFivePm) * avgNumCookiesPurchased, (maxNumOfCustomersSixPm - minNumOfCustomersSixPm) * avgNumCookiesPurchased, (maxNumOfCustomersSevenPm - minNumOfCustomersSevenPm) * avgNumCookiesPurchased, (maxNumOfCustomersEightPm - minNumOfCustomersEightPm) * avgNumCookiesPurchased],
   
   // randomNumOfCustomers2, randomNumOfCustomers3, randomNumOfCustomers4, randomNumOfCustomers5, randomNumOfCustomers6, randomNumOfCustomers7, randomNumOfCustomers8, randomNumOfCustomers9, randomNumOfCustomers10, randomNumOfCustomers11, randomNumOfCustomers12, randomNumOfCustomers13, randomNumOfCustomers14, randomNumOfCustomers15],
 //   shopInfo: ['minCustomers', 'maxCustomers', 'avgNumOfCookiesPurchased']
+minCustomers: 23,
+maxCustomer: 65,
+avgCookiesSold: 6.3,
+
+numOfCustomers: function () {
+  var avgFirstandPikeCustomers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers) + this.minCustomers)
+  return avgFirstandPikeCustomers;
+}
+
+
 render: function () {
   var ulEl = document.getElementById('firstAndPikeShop');
 
@@ -77,6 +87,11 @@ render: function () {
 
 
 // 2.  SeaTac Airport   shop object literal
+var seaTacAirport = {
+  minCustomers: 3,
+  maxCustomers: 24,
+  avgCookiesSold: 1.2,
+}
 // 3. Seattle Center shop object literal
 // 4. Capital Hill shop object literal
 // 5. Ali  shop object literal
