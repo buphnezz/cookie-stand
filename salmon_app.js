@@ -57,24 +57,33 @@ var firstAndPike = {
   
   // randomNumOfCustomers2, randomNumOfCustomers3, randomNumOfCustomers4, randomNumOfCustomers5, randomNumOfCustomers6, randomNumOfCustomers7, randomNumOfCustomers8, randomNumOfCustomers9, randomNumOfCustomers10, randomNumOfCustomers11, randomNumOfCustomers12, randomNumOfCustomers13, randomNumOfCustomers14, randomNumOfCustomers15],
 //   shopInfo: ['minCustomers', 'maxCustomers', 'avgNumOfCookiesPurchased']
+
+
+salesPerEachHour: [],
 minCustomers: 23,
-maxCustomer: 65,
+maxCustomers: 65,
 avgCookiesSold: 6.3,
 
 numOfCustomers: function () {
   var avgFirstandPikeCustomers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers) + this.minCustomers)
   return avgFirstandPikeCustomers;
-}
+},
 
+cookiesSoldPerEachHour: function () {
+  var avgCookiesPurchased = this.numOfCustomers() * this.avgCookiesSold;
+  this.salesPerEachHour.push(avgCookiesPurchased);
+},
 
 render: function () {
   var ulEl = document.getElementById('firstAndPikeShop');
 
   for (var i = 0; i < hoursOfOperation.length; i++) {
+    
+    this.cookiesSoldPerEachHour();
     // 1. create a list of items (create the element)
     var liEl = document.createElement('li');
     // 2. give the li element content
-    liEl.textContent = hoursOfOperation[i] + ': ' + this.customers[i];
+    liEl.textContent = hoursOfOperation[i] + ': ' + this.salesPerEachHour[i] + ' cookies';
     // 3. append the li to the ul (append the element to the DOM)
     ulEl.appendChild(liEl);
   }
@@ -97,5 +106,5 @@ var seaTacAirport = {
 // 5. Ali  shop object literal
 
 firstAndPike.render();
-console.log('min number of customers' + minNumOfCustomersSixAm);
-console.log('max number of customers' +   maxNumOfCustomersSixAm);
+// console.log('min number of customers' + minNumOfCustomersSixAm);
+// console.log('max number of customers' +   maxNumOfCustomersSixAm);
