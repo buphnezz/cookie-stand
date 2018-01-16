@@ -14,7 +14,7 @@ var minNumberCookies = Math.floor(Math.random() * (50 - 0));
 
 var maxNumberCookies = Math.floor(Math.random() * (150 - 51));
 
-var avgNumCookiesPurchased = Math.floor(Math.random) * (3 - 1);
+var avgNumCookiesPurchased = Math.ceil(Math.random()) * (3 - 1);
 
 // need the number of customers each hour, so let's make a random number generator
 var randomNumOfCustomers = Math.floor(Math.random() * 150);
