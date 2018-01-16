@@ -1,3 +1,8 @@
+
+
+
+var avgNumCookiesPurchased = Math.ceil(Math.random()) * (3 - 1);
+
 // We need an array to hold our dogs
 var allStores = [];
 
@@ -163,12 +168,11 @@ function makeHeaderRow() {
 }
 
 // We need to create our Dog instances
-var firstAndPike = new Store('Gary', 'White', 'Westie', 'Gare Bear');
-var seaTacAirport = new Store('Charlotte', 'White', 'Westie', 'Goose');
-var seattleCenter = new Store('Ollivander', 'Tan', 'French Bulldog', 'Ollie');
-var capitolHill = new Store('Buddy', 'Black', 'Labra-doodle', '');
-var alki = new Store('Demi', 'Black and White', 'Border Collie', null);
-
+var firstAndPike = new Store('First and Pike', Math.random(), 'Westie', 'Gare Bear');
+var seaTacAirport = new Store('SeaTac Airport', 'White', 'Westie', 'Goose');
+var seattleCenter = new Store('Seattle Center', 'Tan', 'French Bulldog', 'Ollie');
+var capitolHill = new Store('Capitol Hill', 'Black', 'Labra-doodle', '');
+var alki = new Store('Alki', 'Black and White', 'Border Collie', null);
 // Now we need to call our functions: the one for the header row, and the one for generating the individual dog rows
 makeHeaderRow();
 firstAndPike.render();
