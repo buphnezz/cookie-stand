@@ -7,6 +7,9 @@ var allStores = [];
 // We need to access the table that is in the DOM
 var storeTable = document.getElementById('stores');
 
+// We need to access the form from our index.html
+var storeForm = document.getElementById('store-form');
+
 // We need a constructor to make our dog objects
 function Store(nameOfStore, minCustomers, maxCustomers, avgCookiesSold) {
   this.nameOfStore = nameOfStore;
@@ -81,6 +84,30 @@ function makeHeaderRow() {
   storeTable.appendChild(trEl);
   }
 
+  function renderAllStores() {
+    for(var i in allStores) {
+      allStores[i].render();
+    }
+  }
+
+  function addNewStore(event) {
+    event.preventDefault();
+    console.log(event.target.storeName.value);
+    var newStoreName = event.target.storeName.value;
+    var newMinCustomers = event.target.minCustomers.value;
+    var newMaxCustomers = event.target.maxCustomers.value;
+    var newAvgCookiesSold = event.target.avgCookiesSold.value;
+
+    new Store(newStoreName, newMinCustomers, newMaxCustomers, newAvgCookiesSold);
+
+    storeTable.innerHTML = '';
+    makeHeaderRow();
+    renderAllStores();
+
+
+
+
+  }
 // We need to create our Dog instances
 var firstAndPike = new Store ('First and Pike', 23, 65, 6.3);
 var seaTacAirport = new Store ('SeaTac Airport', 3, 24, 1.2);
