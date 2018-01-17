@@ -8,6 +8,7 @@
 
   <body>
     <h1>Pat's Salmon Cookies</h1>
+    <table id="salmon"></table>
 
     <h3>1st and Pike</h3>
     <ul id="firstAndPikeShop"></ul>
@@ -23,6 +24,26 @@
 
     <h3>Alki</h3>
     <ul id="alkiShop"></ul>
+
+    <form id="salmon-form">
+      <fieldset>
+        <legend>Add a New Store</legend>
+    
+        <label for="storeName">Name:</label>
+        <input name="storeName" type="text" />
+    
+        <label for="minCustomers">Minimum Customers:</label>
+        <input name="minCustomers" type="number" />
+    
+        <label for="maxCustomers">Maximum Customers:</label>
+        <input name="maxCustomers" type="number" />
+    
+        <label for="avgCookiesSold">Average Cookies Sold:</label>
+        <input name="avgCookiesSold" type="number" />
+    
+        <button id="add-store">Add a Store</button>
+      </fieldset>
+    </form>
 
     <table id="stores"></table>
 
