@@ -8,7 +8,8 @@ var allStores = [];
 var storeTable = document.getElementById('stores');
 
 // We need a constructor to make our dog objects
-function Store(minCustomers, maxCustomers, avgCookiesSold) {
+function Store(nameOfStore, minCustomers, maxCustomers, avgCookiesSold) {
+  this.nameOfStore = nameOfStore;
   this.minCustomers = minCustomers;
   this.maxCustomers = maxCustomers;
   this.avgCookiesSold = avgCookiesSold;
@@ -39,7 +40,7 @@ Store.prototype.render = function () {
   // create td
   var tdEl = document.createElement('td');
   // give td content (name, then color, then breed, the nickname) <- eventually do it in a for loop
-  tdEl.textContent = '';
+  tdEl.textContent = this.nameOfStore;
   // append td to tr
   trEl.appendChild(tdEl);
   // append tr to table
@@ -65,16 +66,18 @@ function makeHeaderRow() {
     trEl.appendChild(thEl);
     thEl.textContent = hoursOfOperation[i];
   }
-
+  var thEl = document.createElement('th');
+  thEl.textContent = 'Total:';
+  trEl.appendChild(thEl);
   storeTable.appendChild(trEl);
-}
+  }
 
 // We need to create our Dog instances
-var firstAndPike = new Store (23, 65, 6.3);
-var seaTacAirport = new Store (3, 24, 1.2);
-var seattleCenter = new Store (11, 38, 3.7);
-var capitolHill = new Store (20, 38, 2.3);
-var alki = new Store (2, 16, 4.6);
+var firstAndPike = new Store ('First and Pike', 23, 65, 6.3);
+var seaTacAirport = new Store ('SeaTac Airport', 3, 24, 1.2);
+var seattleCenter = new Store ('Seattle Center', 11, 38, 3.7);
+var capitolHill = new Store ('Capitol Hill', 20, 38, 2.3);
+var alki = new Store ('Alki', 2, 16, 4.6);
 // var seaTacAirport = new Store('SeaTac Airport', 'numcookies2', 'Westie', 'Goose');
 // var seattleCenter = new Store('Seattle Center', 'Tan', 'French Bulldog', 'Ollie');
 // var capitolHill = new Store('Capitol Hill', 'Black', 'Labra-doodle', '');
