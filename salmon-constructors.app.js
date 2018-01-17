@@ -11,20 +11,21 @@ var storeTable = document.getElementById('stores');
 function Store(nameOfStore, minCustomers, maxCustomers, avgCookiesSold) {
   this.nameOfStore = nameOfStore;
   this.minCustomers = minCustomers;
-  this.maxCustomers = maxCustomers;
   this.avgCookiesSold = avgCookiesSold;
+  this.maxCustomers = maxCustomers;
   this.salesPerEachHour = [];
   this.totalCookies = 0;
 
   this.numOfCustomers = function () {
-    var avgFirstandPikeCustomers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers) + this.minCustomers)
+    var avgFirstandPikeCustomers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1) + this.minCustomers);
+    console.log(avgFirstandPikeCustomers);
     return avgFirstandPikeCustomers;
   };
 
   this.cookiesSoldPerEachHour = function () {
     for (var cookieCounter = 0; cookieCounter < hoursOfOperation.length; cookieCounter++) {
 
-      var avgCookiesPurchased = this.numOfCustomers() * this.avgCookiesSold;
+      var avgCookiesPurchased = Math.floor(this.numOfCustomers() * this.avgCookiesSold);
       this.salesPerEachHour.push(avgCookiesPurchased)
 
       this.totalCookies = this.totalCookies + avgCookiesPurchased;
