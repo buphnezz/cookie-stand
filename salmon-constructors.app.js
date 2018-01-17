@@ -14,6 +14,7 @@ function Store(nameOfStore, minCustomers, maxCustomers, avgCookiesSold) {
   this.maxCustomers = maxCustomers;
   this.avgCookiesSold = avgCookiesSold;
   this.salesPerEachHour = [];
+  this.totalCookies = 0;
 
   this.numOfCustomers = function () {
     var avgFirstandPikeCustomers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers) + this.minCustomers)
@@ -21,13 +22,15 @@ function Store(nameOfStore, minCustomers, maxCustomers, avgCookiesSold) {
   };
 
   this.cookiesSoldPerEachHour = function () {
-    for (var repeatCookieCount = 0; repeatCookieCount < hoursOfOperation.length; repeatCookieCount++) {
+    for (var cookieCounter = 0; cookieCounter < hoursOfOperation.length; cookieCounter++) {
 
       var avgCookiesPurchased = this.numOfCustomers() * this.avgCookiesSold;
       this.salesPerEachHour.push(avgCookiesPurchased)
+
+      this.totalCookies = this.totalCookies + avgCookiesPurchased;
     }
   };
-
+//for avgcookiespurchased * every hour = total. 
   this.cookiesSoldPerEachHour();
 
   allStores.push(this);
@@ -49,7 +52,13 @@ Store.prototype.render = function () {
     tdEl = document.createElement('td');
     trEl.appendChild(tdEl);
     tdEl.textContent = this.salesPerEachHour[i];
+    
   }
+
+  tdEl = document.createElement('td');
+  trEl.appendChild(tdEl);
+  tdEl.textContent = this.totalCookies;
+
 
   storeTable.appendChild(trEl);
 };
@@ -78,11 +87,7 @@ var seaTacAirport = new Store ('SeaTac Airport', 3, 24, 1.2);
 var seattleCenter = new Store ('Seattle Center', 11, 38, 3.7);
 var capitolHill = new Store ('Capitol Hill', 20, 38, 2.3);
 var alki = new Store ('Alki', 2, 16, 4.6);
-// var seaTacAirport = new Store('SeaTac Airport', 'numcookies2', 'Westie', 'Goose');
-// var seattleCenter = new Store('Seattle Center', 'Tan', 'French Bulldog', 'Ollie');
-// var capitolHill = new Store('Capitol Hill', 'Black', 'Labra-doodle', '');
-// var alki = new Store('Alki', 'Black and White', 'Border Collie', null);
-// Now we need to call our functions: the one for the header row, and the one for generating the individual dog rows
+
 makeHeaderRow();
 firstAndPike.render();
 seaTacAirport.render();
