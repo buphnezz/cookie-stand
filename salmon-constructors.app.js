@@ -1,7 +1,5 @@
+var hoursOfOperation = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
-
-
-var avgNumCookiesPurchased = Math.ceil(Math.random()) * (3 - 1);
 
 // We need an array to hold our dogs
 var allStores = [];
@@ -10,22 +8,26 @@ var allStores = [];
 var storeTable = document.getElementById('stores');
 
 // We need a constructor to make our dog objects
-function Store(sixAm, sevenAm, eightAm, nineAm, tenAm, elevenAm, twelvePm, onePm, twoPm, threePm, fourPm, fivePm, sixPm, sevenPm, eightPm) {
-  this.sixAm = sixAm;
-  this.sevenAm = sevenAm;
-  this.eightAm = eightAm;
-  this.nineAm = nineAm;
-  this.tenA = tenAm;
-  this.elevenAm = elevenAm;
-  this.twelvePm = twelvePm;
-  this.onePm = onePm;
-  this.twoPm = twoPm;
-  this.threePm = threePm;
-  this.fourPm = fourPm;
-  this.fivePm = fivePm;
-  this.sixPm = sixPm;
-  this.sevenPm = sevenPm;
-  this.eightPm = eightPm;
+function Store(minCustomers, maxCustomers, avgCookiesSold) {
+  this.minCustomers = minCustomers;
+  this.maxCustomers = maxCustomers;
+  this.avgCookiesSold = avgCookiesSold;
+  this.salesPerEachHour = [];
+
+  this.numOfCustomers = function () {
+    var avgFirstandPikeCustomers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers) + this.minCustomers)
+    return avgFirstandPikeCustomers;
+  };
+
+  this.cookiesSoldPerEachHour = function () {
+    for (var repeatCookieCount = 0; repeatCookieCount < hoursOfOperation.length; repeatCookieCount++) {
+
+      var avgCookiesPurchased = this.numOfCustomers() * this.avgCookiesSold;
+      this.salesPerEachHour.push(avgCookiesPurchased)
+    }
+  };
+
+  this.cookiesSoldPerEachHour();
 
   allStores.push(this);
 }
@@ -37,66 +39,16 @@ Store.prototype.render = function () {
   // create td
   var tdEl = document.createElement('td');
   // give td content (name, then color, then breed, the nickname) <- eventually do it in a for loop
-  tdEl.textContent = this.sixAm;
+  tdEl.textContent = '';
   // append td to tr
   trEl.appendChild(tdEl);
   // append tr to table
 
-  tdEl = document.createElement('td');
-  tdEl.textContent = this.sevenAm;
-  trEl.appendChild(tdEl);
-
-  tdEl = document.createElement('td');
-  tdEl.textContent = this.eightAm;
-  trEl.appendChild(tdEl);
-
-  tdEl = document.createElement('td');
-  tdEl.textContent = this.nineAm;
-  trEl.appendChild(tdEl);
-
-  tdEl = document.createElement('td');
-  tdEl.textContent = this.tenAm;
-  trEl.appendChild(tdEl);
-
-  tdEl = document.createElement('td');
-  tdEl.textContent = this.elevenAm;
-  trEl.appendChild(tdEl);
-
-  tdEl = document.createElement('td');
-  tdEl.textContent = this.twelvePm;
-  trEl.appendChild(tdEl);
-
-  tdEl = document.createElement('td');
-  tdEl.textContent = this.onePm;
-  trEl.appendChild(tdEl);
-
-  tdEl = document.createElement('td');
-  tdEl.textContent = this.twoPm;
-  trEl.appendChild(tdEl);
-
-  tdEl = document.createElement('td');
-  tdEl.textContent = this.threePm;
-  trEl.appendChild(tdEl);
-
-  tdEl = document.createElement('td');
-  tdEl.textContent = this.fourPm;
-  trEl.appendChild(tdEl);
-
-  tdEl = document.createElement('td');
-  tdEl.textContent = this.fivePm;
-  trEl.appendChild(tdEl);
-
-  tdEl = document.createElement('td');
-  tdEl.textContent = this.sixPm;
-  trEl.appendChild(tdEl);
-
-  tdEl = document.createElement('td');
-  tdEl.textContent = this.sevenPm;
-  trEl.appendChild(tdEl);
-
-  tdEl = document.createElement('td');
-  tdEl.textContent = this.eightPm;
-  trEl.appendChild(tdEl);
+  for (var i = 0; i < this.salesPerEachHour.length; i++) {
+    tdEl = document.createElement('td');
+    trEl.appendChild(tdEl);
+    tdEl.textContent = this.salesPerEachHour[i];
+  }
 
   storeTable.appendChild(trEl);
 };
@@ -105,74 +57,28 @@ Store.prototype.render = function () {
 function makeHeaderRow() {
   var trEl = document.createElement('tr');
   var thEl = document.createElement('th');
-  thEl.textContent = '6:00am';
+  thEl.textContent = '';
   trEl.appendChild(thEl);
 
-  var thEl = document.createElement('th');
-  thEl.textContent = '7:00am';
-  trEl.appendChild(thEl);
-
-  var thEl = document.createElement('th');
-  thEl.textContent = '8:00am';
-  trEl.appendChild(thEl);
-
-  var thEl = document.createElement('th');
-  thEl.textContent = '9:00am';
-  trEl.appendChild(thEl);
-
-  var thEl = document.createElement('th');
-  thEl.textContent = '10:00am';
-  trEl.appendChild(thEl);
-
-  var thEl = document.createElement('th');
-  thEl.textContent = '11:00am';
-  trEl.appendChild(thEl);
-
-  var thEl = document.createElement('th');
-  thEl.textContent = '12:00pm';
-  trEl.appendChild(thEl);
-
-  var thEl = document.createElement('th');
-  thEl.textContent = '1:00pm';
-  trEl.appendChild(thEl);
-
-  var thEl = document.createElement('th');
-  thEl.textContent = '2:00pm';
-  trEl.appendChild(thEl);
-
-  var thEl = document.createElement('th');
-  thEl.textContent = '3:00pm';
-  trEl.appendChild(thEl);
-
-  var thEl = document.createElement('th');
-  thEl.textContent = '4:00pm';
-  trEl.appendChild(thEl);
-
-  var thEl = document.createElement('th');
-  thEl.textContent = '5:00pm';
-  trEl.appendChild(thEl);
-
-  var thEl = document.createElement('th');
-  thEl.textContent = '6:00pm';
-  trEl.appendChild(thEl);
-
-  var thEl = document.createElement('th');
-  thEl.textContent = '7:00pm';
-  trEl.appendChild(thEl);
-
-  var thEl = document.createElement('th');
-  thEl.textContent = '8:00pm';
-  trEl.appendChild(thEl);
+  for (var i = 0; i < hoursOfOperation.length; i++) {
+    var thEl = document.createElement('th');
+    trEl.appendChild(thEl);
+    thEl.textContent = hoursOfOperation[i];
+  }
 
   storeTable.appendChild(trEl);
 }
 
 // We need to create our Dog instances
-var firstAndPike = new Store('First and Pike', Math.random(), 'Westie', 'Gare Bear');
-var seaTacAirport = new Store('SeaTac Airport', 'White', 'Westie', 'Goose');
-var seattleCenter = new Store('Seattle Center', 'Tan', 'French Bulldog', 'Ollie');
-var capitolHill = new Store('Capitol Hill', 'Black', 'Labra-doodle', '');
-var alki = new Store('Alki', 'Black and White', 'Border Collie', null);
+var firstAndPike = new Store (23, 65, 6.3);
+var seaTacAirport = new Store (3, 24, 1.2);
+var seattleCenter = new Store (11, 38, 3.7);
+var capitolHill = new Store (20, 38, 2.3);
+var alki = new Store (2, 16, 4.6);
+// var seaTacAirport = new Store('SeaTac Airport', 'numcookies2', 'Westie', 'Goose');
+// var seattleCenter = new Store('Seattle Center', 'Tan', 'French Bulldog', 'Ollie');
+// var capitolHill = new Store('Capitol Hill', 'Black', 'Labra-doodle', '');
+// var alki = new Store('Alki', 'Black and White', 'Border Collie', null);
 // Now we need to call our functions: the one for the header row, and the one for generating the individual dog rows
 makeHeaderRow();
 firstAndPike.render();
