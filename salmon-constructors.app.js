@@ -20,14 +20,14 @@ function Store(nameOfStore, minCustomers, maxCustomers, avgCookiesSold) {
   this.totalCookies = 0;
 
   this.numOfCustomers = function () {
-    var avgFirstandPikeCustomers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers) + this.minCustomers)
+    var avgFirstandPikeCustomers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1) + this.minCustomers)
     return avgFirstandPikeCustomers;
   };
 
   this.cookiesSoldPerEachHour = function () {
     for (var cookieCounter = 0; cookieCounter < hoursOfOperation.length; cookieCounter++) {
 
-      var avgCookiesPurchased = this.numOfCustomers() * this.avgCookiesSold;
+      var avgCookiesPurchased = Math.floor(this.numOfCustomers() * this.avgCookiesSold);
       this.salesPerEachHour.push(avgCookiesPurchased)
 
       this.totalCookies = this.totalCookies + avgCookiesPurchased;
@@ -96,24 +96,23 @@ function makeHeaderRow() {
     var newStoreName = event.target.storeName.value;
     var newMinCustomers = event.target.minCustomers.value;
     var newMaxCustomers = event.target.maxCustomers.value;
-    var newAvgCookiesSold = event.target.avgCookiesSold.value;
+    var newAvgCookiesSoldPerHour = event.target.avgCookiesSoldPerHour.value;
 
-    new Store(newStoreName, newMinCustomers, newMaxCustomers, newAvgCookiesSold);
+    new Store(newStoreName, newMinCustomers, newMaxCustomers, newAvgCookiesSoldPerHour);
 
     storeTable.innerHTML = '';
     makeHeaderRow();
     renderAllStores();
-
-
-
-
   }
+
 // We need to create our Dog instances
 var firstAndPike = new Store ('First and Pike', 23, 65, 6.3);
 var seaTacAirport = new Store ('SeaTac Airport', 3, 24, 1.2);
 var seattleCenter = new Store ('Seattle Center', 11, 38, 3.7);
 var capitolHill = new Store ('Capitol Hill', 20, 38, 2.3);
 var alki = new Store ('Alki', 2, 16, 4.6);
+
+storeForm.addEventListener('submit', addNewStore);
 
 makeHeaderRow();
 firstAndPike.render();
