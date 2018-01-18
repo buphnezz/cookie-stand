@@ -7,6 +7,53 @@ var allStores = [];
 // We need to access the table that is in the DOM
 var storeTable = document.getElementById('stores');
 
+// We need to access the form from our index.html
+var storeForm = document.getElementById('store-form');
+console.log('Storeform test', storeForm);
+
+function totalCookieFooter() {
+  var tfootEl = document.createElement('tfoot'); // created a tfoot in my html doc
+  console.log(tfootEl);
+  var trEl = document.createElement('tr'); // created a <tr> in my html doc
+  var tdEl = document.createElement('td');  // created a <td> in my html doc
+  console.log(tdEl);
+  tdEl.textContent = 'Total Cookies Sold Per Hour';  // inputting the data 'Total Cookies' into the <td> we just created in the HTML doc.
+  trEl.appendChild(tdEl); //  append that Total Cookies data to the <tr> above it.
+
+
+  for (var hour = 0; hour < hoursOfOperation.length; hour++) {
+    console.log(hoursOfOperation[hour]);
+    var runningTotal = 0;
+    for (var store = 0; store < allStores.length; store++) {
+      console.log(allStores[store]);
+      allStores[store].salesPerEachHour[hour];
+      console.log(allStores[store].salesPerEachHour[hour]);
+      runningTotal += allStores[store].salesPerEachHour[hour]; // += keeps adding to the previous total.
+      console.log(runningTotal);  
+    }
+
+    var tdEl = document.createElement('td');  // created a <td> in my html doc
+    console.log(tdEl);
+    tdEl.textContent = runningTotal;  // inputting the data 'Total Cookies' into the <td> we just created in the HTML doc.
+    trEl.appendChild(tdEl); //  append that Total Cookies data to the <tr> above it.
+  }
+
+  var grandTotal = 0;
+  for (var i = 0; i < allStores.length; i++) {
+    console.log('this shows all stores', allStores[i]);
+    console.log(allStores[i].totalCookies);
+    grandTotal += allStores[i].totalCookies;
+    console.log(grandTotal);
+  }
+  var tdEl = document.createElement('td');  // created a <td> in my html doc
+  console.log(tdEl);
+  tdEl.textContent = grandTotal;  // inputting the data 'Total Cookies' into the <td> we just created in the HTML doc.
+  trEl.appendChild(tdEl); //  append that Total Cookies data to the <tr> above it.
+  tfootEl.appendChild(trEl);  // appending/attaching that row to my <tfoot>
+  storeTable.appendChild(tfootEl);  // append the tfootEl to the table.
+
+}
+
 // We need a constructor to make our dog objects
 function Store(nameOfStore, minCustomers, maxCustomers, avgCookiesSold) {
   this.nameOfStore = nameOfStore;
@@ -17,8 +64,12 @@ function Store(nameOfStore, minCustomers, maxCustomers, avgCookiesSold) {
   this.totalCookies = 0;
 
   this.numOfCustomers = function () {
+<<<<<<< HEAD
+    var avgFirstandPikeCustomers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1) + this.minCustomers)
+=======
     var avgFirstandPikeCustomers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1) + this.minCustomers);
     console.log(avgFirstandPikeCustomers);
+>>>>>>> e145e138eabd3cf1c2f18e02ac2cadb311da1d3d
     return avgFirstandPikeCustomers;
   };
 
@@ -29,12 +80,16 @@ function Store(nameOfStore, minCustomers, maxCustomers, avgCookiesSold) {
       this.salesPerEachHour.push(avgCookiesPurchased)
 
       this.totalCookies = this.totalCookies + avgCookiesPurchased;
+      console.log('total cookies ', this.totalCookies)
     }
   };
+
+
 //for avgcookiespurchased * every hour = total. 
   this.cookiesSoldPerEachHour();
 
   allStores.push(this);
+
 }
 
 // Let's refactor so that render() method is on the constructor's prototype; this will tidy up the way things look on the screen
@@ -53,13 +108,12 @@ Store.prototype.render = function () {
     tdEl = document.createElement('td');
     trEl.appendChild(tdEl);
     tdEl.textContent = this.salesPerEachHour[i];
-    
   }
 
+  
   tdEl = document.createElement('td');
   trEl.appendChild(tdEl);
   tdEl.textContent = this.totalCookies;
-
 
   storeTable.appendChild(trEl);
 };
@@ -82,6 +136,33 @@ function makeHeaderRow() {
   storeTable.appendChild(trEl);
   }
 
+  function renderAllStores() {
+    for(var i in allStores) {
+      allStores[i].render();
+    }
+  }
+
+  function addNewStore(event) {
+    console.log('inside of event');
+    event.preventDefault();
+    console.log(event.target.storeName.value);
+    var newStoreName = event.target.storeName.value;
+    var newMinCustomers = event.target.minCustomers.value;
+    var newMaxCustomers = event.target.maxCustomers.value;
+    var newAvgCookiesSold = event.target.avgCookiesSold.value;
+
+    new Store(newStoreName, newMinCustomers, newMaxCustomers, newAvgCookiesSold);
+
+    storeTable.innerHTML = '';
+    makeHeaderRow();
+    renderAllStores(); 
+    totalCookieFooter();
+  }
+
+storeForm.addEventListener('submit', addNewStore);
+alert('The button press worked');
+console.log(addNewStore);
+
 // We need to create our Dog instances
 var firstAndPike = new Store ('First and Pike', 23, 65, 6.3);
 var seaTacAirport = new Store ('SeaTac Airport', 3, 24, 1.2);
@@ -89,9 +170,12 @@ var seattleCenter = new Store ('Seattle Center', 11, 38, 3.7);
 var capitolHill = new Store ('Capitol Hill', 20, 38, 2.3);
 var alki = new Store ('Alki', 2, 16, 4.6);
 
+// var table = document.getElementById("stores");
+// var footer = table.createTFoot();
+// var row = footer.insertRow(0);
+// var cell = row.insertCell(0);
+// cell.innerHTML = "<b>Total Cookies Sold</b>";
+
 makeHeaderRow();
-firstAndPike.render();
-seaTacAirport.render();
-seattleCenter.render();
-capitolHill.render();
-alki.render();
+renderAllStores();
+totalCookieFooter();
