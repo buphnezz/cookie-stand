@@ -66,13 +66,18 @@ function totalCookieFooter() {
 function Store(nameOfStore, minCustomers, maxCustomers, avgCookiesSold) {
   this.nameOfStore = nameOfStore;
   this.minCustomers = minCustomers;
-  this.maxCustomers = maxCustomers;
   this.avgCookiesSold = avgCookiesSold;
+  this.maxCustomers = maxCustomers;
   this.salesPerEachHour = [];
   this.totalCookies = 0;
 
   this.numOfCustomers = function () {
+<<<<<<< HEAD
     var avgFirstandPikeCustomers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1) + this.minCustomers)
+=======
+    var avgFirstandPikeCustomers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1) + this.minCustomers);
+    console.log(avgFirstandPikeCustomers);
+>>>>>>> e145e138eabd3cf1c2f18e02ac2cadb311da1d3d
     return avgFirstandPikeCustomers;
   };
 
