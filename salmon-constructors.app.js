@@ -9,6 +9,7 @@ var storeTable = document.getElementById('stores');
 
 // We need to access the form from our index.html
 var storeForm = document.getElementById('store-form');
+console.log('Storeform test', storeForm);
 
 // We need a constructor to make our dog objects
 function Store(nameOfStore, minCustomers, maxCustomers, avgCookiesSold) {
@@ -91,19 +92,24 @@ function makeHeaderRow() {
   }
 
   function addNewStore(event) {
+    console.log('inside of event');
     event.preventDefault();
     console.log(event.target.storeName.value);
     var newStoreName = event.target.storeName.value;
     var newMinCustomers = event.target.minCustomers.value;
     var newMaxCustomers = event.target.maxCustomers.value;
-    var newAvgCookiesSoldPerHour = event.target.avgCookiesSoldPerHour.value;
+    var newAvgCookiesSold = event.target.avgCookiesSold.value;
 
-    new Store(newStoreName, newMinCustomers, newMaxCustomers, newAvgCookiesSoldPerHour);
+    new Store(newStoreName, newMinCustomers, newMaxCustomers, newAvgCookiesSold);
 
     storeTable.innerHTML = '';
     makeHeaderRow();
     renderAllStores();
   }
+
+storeForm.addEventListener('submit', addNewStore);
+alert('The button press worked');
+console.log(addNewStore);
 
 // We need to create our Dog instances
 var firstAndPike = new Store ('First and Pike', 23, 65, 6.3);
@@ -112,11 +118,5 @@ var seattleCenter = new Store ('Seattle Center', 11, 38, 3.7);
 var capitolHill = new Store ('Capitol Hill', 20, 38, 2.3);
 var alki = new Store ('Alki', 2, 16, 4.6);
 
-storeForm.addEventListener('submit', addNewStore);
-
 makeHeaderRow();
-firstAndPike.render();
-seaTacAirport.render();
-seattleCenter.render();
-capitolHill.render();
-alki.render();
+renderAllStores();

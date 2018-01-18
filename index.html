@@ -7,26 +7,10 @@
   </head>
 
   <body>
-    <h1>Pat's Salmon Cookies</h1>
-    <table id="salmon"></table>
-
-    <h3>1st and Pike</h3>
-    <ul id="firstAndPikeShop"></ul>
-
-    <h3>SeaTac Airport</h3>
-    <ul id="seaTacAirportShop"></ul>
-
-    <h3>Seattle Center</h3>
-    <ul id="seattleCenterShop"></ul>
-      
-    <h3>Capitol Hill</h3>
-    <ul id="capitolHillShop"></ul>
-
-    <h3>Alki</h3>
-    <ul id="alkiShop"></ul>
-
-    <form id="store-form">
-      <fieldset>
+    <h1>Pat's Salmon Cookie Sale Trends</h1>
+    <table id="stores"></table>
+    <fieldset>
+      <form id="store-form">
         <legend>Add a New Store</legend>
     
         <label for="storeName">Name:</label>
@@ -41,11 +25,9 @@
         <label for="avgCookiesSold">Average Cookies Sold:</label>
         <input name="avgCookiesSold" type="number" />
     
-        <button id="add-store">Add a Store</button>
-      </fieldset>
-    </form>
-
-    <table id="stores"></table>
+        <button type="submit" id="add-store" >Add a Store</button>
+      </form>
+    </fieldset>
 
     <script type="text/javascript" src="salmon-constructors.app.js"></script>
   </body>
