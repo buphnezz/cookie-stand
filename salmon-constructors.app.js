@@ -63,7 +63,6 @@ Store.prototype.render = function () {
   trEl.appendChild(tdEl);
   tdEl.textContent = this.totalCookies;
 
-
   storeTable.appendChild(trEl);
 };
 
