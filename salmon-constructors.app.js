@@ -39,13 +39,24 @@ function totalCookieFooter() {
       runningTotal += allStores[store].salesPerEachHour[hour]; // += keeps adding to the previous total.
       console.log(runningTotal);  
     }
-    
+
     var tdEl = document.createElement('td');  // created a <td> in my html doc
     console.log(tdEl);
     tdEl.textContent = runningTotal;  // inputting the data 'Total Cookies' into the <td> we just created in the HTML doc.
     trEl.appendChild(tdEl); //  append that Total Cookies data to the <tr> above it.
   }
 
+  var grandTotal = 0;
+  for (var i = 0; i < allStores.length; i++) {
+    console.log('this shows all stores', allStores[i]);
+    console.log(allStores[i].totalCookies);
+    grandTotal += allStores[i].totalCookies;
+    console.log(grandTotal);
+  }
+  var tdEl = document.createElement('td');  // created a <td> in my html doc
+  console.log(tdEl);
+  tdEl.textContent = grandTotal;  // inputting the data 'Total Cookies' into the <td> we just created in the HTML doc.
+  trEl.appendChild(tdEl); //  append that Total Cookies data to the <tr> above it.
   tfootEl.appendChild(trEl);  // appending/attaching that row to my <tfoot>
   storeTable.appendChild(tfootEl);  // append the tfootEl to the table.
 
@@ -72,6 +83,22 @@ function Store(nameOfStore, minCustomers, maxCustomers, avgCookiesSold) {
       this.salesPerEachHour.push(avgCookiesPurchased)
 
       this.totalCookies = this.totalCookies + avgCookiesPurchased;
+      console.log('total cookies ', this.totalCookies)
+
+      // var thEl =document.createElement('td')
+      // tdEl.textContent = this.runningTotal + this.totalCookies;
+      // trEl.appendChild(tdEl);
+      // storeTable.appendChild(trEl);
+      // var grandTotal = this.totalCookies + this.runningTotal;
+      // var tdEl = document.createElement('td');  // created a <td> in my html doc
+      // console.log(tdEl);
+      // tdEl.textContent = grandTotal;  // inputting the data 'Total Cookies' into the <td> we just created in the HTML doc.
+      // trEl.appendChild(tdEl); //  append that Total Cookies data to the <tr> above it.
+
+      // if (cookieCounter === 14) {
+        
+      //   alert('the total cookies for the day = ' + this.totalCookies);
+      // }
     }
   };
 
@@ -80,6 +107,7 @@ function Store(nameOfStore, minCustomers, maxCustomers, avgCookiesSold) {
   this.cookiesSoldPerEachHour();
 
   allStores.push(this);
+
 }
 
 // Let's refactor so that render() method is on the constructor's prototype; this will tidy up the way things look on the screen
@@ -168,3 +196,4 @@ var alki = new Store ('Alki', 2, 16, 4.6);
 
 makeHeaderRow();
 renderAllStores();
+totalCookieFooter();
