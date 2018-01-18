@@ -11,6 +11,46 @@ var storeTable = document.getElementById('stores');
 var storeForm = document.getElementById('store-form');
 console.log('Storeform test', storeForm);
 
+// function totalCookieFooter () {
+// var table = document.getElementById("stores");
+// var footer = table.createTFoot();
+// var row = footer.insertRow(0);
+// var cell = row.insertCell(0);
+// cell.innerHTML = "<b>Total Cookies Sold</b>";
+// }
+
+function totalCookieFooter() {
+  var tfootEl = document.createElement('tfoot'); // created a tfoot in my html doc
+  console.log(tfootEl);
+  var trEl = document.createElement('tr'); // created a <tr> in my html doc
+  var tdEl = document.createElement('td');  // created a <td> in my html doc
+  console.log(tdEl);
+  tdEl.textContent = 'Total Cookies Sold Per Hour';  // inputting the data 'Total Cookies' into the <td> we just created in the HTML doc.
+  trEl.appendChild(tdEl); //  append that Total Cookies data to the <tr> above it.
+
+
+  for (var hour = 0; hour < hoursOfOperation.length; hour++) {
+    console.log(hoursOfOperation[hour]);
+    var runningTotal = 0;
+    for (var store = 0; store < allStores.length; store++) {
+      console.log(allStores[store]);
+      allStores[store].salesPerEachHour[hour];
+      console.log(allStores[store].salesPerEachHour[hour]);
+      runningTotal += allStores[store].salesPerEachHour[hour]; // += keeps adding to the previous total.
+      console.log(runningTotal);  
+    }
+    
+    var tdEl = document.createElement('td');  // created a <td> in my html doc
+    console.log(tdEl);
+    tdEl.textContent = runningTotal;  // inputting the data 'Total Cookies' into the <td> we just created in the HTML doc.
+    trEl.appendChild(tdEl); //  append that Total Cookies data to the <tr> above it.
+  }
+
+  tfootEl.appendChild(trEl);  // appending/attaching that row to my <tfoot>
+  storeTable.appendChild(tfootEl);  // append the tfootEl to the table.
+
+}
+
 // We need a constructor to make our dog objects
 function Store(nameOfStore, minCustomers, maxCustomers, avgCookiesSold) {
   this.nameOfStore = nameOfStore;
@@ -34,6 +74,8 @@ function Store(nameOfStore, minCustomers, maxCustomers, avgCookiesSold) {
       this.totalCookies = this.totalCookies + avgCookiesPurchased;
     }
   };
+
+
 //for avgcookiespurchased * every hour = total. 
   this.cookiesSoldPerEachHour();
 
@@ -56,9 +98,9 @@ Store.prototype.render = function () {
     tdEl = document.createElement('td');
     trEl.appendChild(tdEl);
     tdEl.textContent = this.salesPerEachHour[i];
-    
   }
 
+  
   tdEl = document.createElement('td');
   trEl.appendChild(tdEl);
   tdEl.textContent = this.totalCookies;
@@ -103,7 +145,8 @@ function makeHeaderRow() {
 
     storeTable.innerHTML = '';
     makeHeaderRow();
-    renderAllStores();
+    renderAllStores(); 
+    totalCookieFooter();
   }
 
 storeForm.addEventListener('submit', addNewStore);
@@ -116,6 +159,12 @@ var seaTacAirport = new Store ('SeaTac Airport', 3, 24, 1.2);
 var seattleCenter = new Store ('Seattle Center', 11, 38, 3.7);
 var capitolHill = new Store ('Capitol Hill', 20, 38, 2.3);
 var alki = new Store ('Alki', 2, 16, 4.6);
+
+// var table = document.getElementById("stores");
+// var footer = table.createTFoot();
+// var row = footer.insertRow(0);
+// var cell = row.insertCell(0);
+// cell.innerHTML = "<b>Total Cookies Sold</b>";
 
 makeHeaderRow();
 renderAllStores();
