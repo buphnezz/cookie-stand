@@ -11,14 +11,6 @@ var storeTable = document.getElementById('stores');
 var storeForm = document.getElementById('store-form');
 console.log('Storeform test', storeForm);
 
-// function totalCookieFooter () {
-// var table = document.getElementById("stores");
-// var footer = table.createTFoot();
-// var row = footer.insertRow(0);
-// var cell = row.insertCell(0);
-// cell.innerHTML = "<b>Total Cookies Sold</b>";
-// }
-
 function totalCookieFooter() {
   var tfootEl = document.createElement('tfoot'); // created a tfoot in my html doc
   console.log(tfootEl);
@@ -89,21 +81,6 @@ function Store(nameOfStore, minCustomers, maxCustomers, avgCookiesSold) {
 
       this.totalCookies = this.totalCookies + avgCookiesPurchased;
       console.log('total cookies ', this.totalCookies)
-
-      // var thEl =document.createElement('td')
-      // tdEl.textContent = this.runningTotal + this.totalCookies;
-      // trEl.appendChild(tdEl);
-      // storeTable.appendChild(trEl);
-      // var grandTotal = this.totalCookies + this.runningTotal;
-      // var tdEl = document.createElement('td');  // created a <td> in my html doc
-      // console.log(tdEl);
-      // tdEl.textContent = grandTotal;  // inputting the data 'Total Cookies' into the <td> we just created in the HTML doc.
-      // trEl.appendChild(tdEl); //  append that Total Cookies data to the <tr> above it.
-
-      // if (cookieCounter === 14) {
-        
-      //   alert('the total cookies for the day = ' + this.totalCookies);
-      // }
     }
   };
 
