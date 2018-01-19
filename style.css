@@ -15,3 +15,10 @@ img {
     padding: 10px;
 }
 
+h3 {
+  align-content: center;
+}
+
+#map {
+  width: 2500px;
+}
