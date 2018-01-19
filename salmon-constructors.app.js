@@ -170,7 +170,16 @@ var alki = new Store('Alki', 2, 16, 4.6);
 // var row = footer.insertRow(0);
 // var cell = row.insertCell(0);
 // cell.innerHTML = "<b>Total Cookies Sold</b>";
+function myMap() {
+  var mapOptions = {
+    center: new google.maps.LatLng(47.608013, -122.335167),
+    zoom: 10,
+    mapTypeId: google.maps.MapTypeId.HYBRID
+  }
+  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+} 
 
 makeHeaderRow();
 renderAllStores();
 totalCookieFooter();
+myMap();
