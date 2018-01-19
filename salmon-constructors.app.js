@@ -29,7 +29,7 @@ function totalCookieFooter() {
       allStores[store].salesPerEachHour[hour];
       console.log(allStores[store].salesPerEachHour[hour]);
       runningTotal += allStores[store].salesPerEachHour[hour]; // += keeps adding to the previous total.
-      console.log(runningTotal);  
+      console.log(runningTotal);
     }
 
     var tdEl = document.createElement('td');  // created a <td> in my html doc
@@ -64,12 +64,7 @@ function Store(nameOfStore, minCustomers, maxCustomers, avgCookiesSold) {
   this.totalCookies = 0;
 
   this.numOfCustomers = function () {
-<<<<<<< HEAD
     var avgFirstandPikeCustomers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1) + this.minCustomers)
-=======
-    var avgFirstandPikeCustomers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1) + this.minCustomers);
-    console.log(avgFirstandPikeCustomers);
->>>>>>> e145e138eabd3cf1c2f18e02ac2cadb311da1d3d
     return avgFirstandPikeCustomers;
   };
 
@@ -85,7 +80,7 @@ function Store(nameOfStore, minCustomers, maxCustomers, avgCookiesSold) {
   };
 
 
-//for avgcookiespurchased * every hour = total. 
+  //for avgcookiespurchased * every hour = total. 
   this.cookiesSoldPerEachHour();
 
   allStores.push(this);
@@ -110,7 +105,7 @@ Store.prototype.render = function () {
     tdEl.textContent = this.salesPerEachHour[i];
   }
 
-  
+
   tdEl = document.createElement('td');
   trEl.appendChild(tdEl);
   tdEl.textContent = this.totalCookies;
@@ -134,48 +129,57 @@ function makeHeaderRow() {
   thEl.textContent = 'Total:';
   trEl.appendChild(thEl);
   storeTable.appendChild(trEl);
+}
+
+function renderAllStores() {
+  for (var i in allStores) {
+    allStores[i].render();
   }
+}
 
-  function renderAllStores() {
-    for(var i in allStores) {
-      allStores[i].render();
-    }
-  }
+function addNewStore(event) {
+  console.log('inside of event');
+  event.preventDefault();
+  console.log(event.target.storeName.value);
+  var newStoreName = event.target.storeName.value;
+  var newMinCustomers = event.target.minCustomers.value;
+  var newMaxCustomers = event.target.maxCustomers.value;
+  var newAvgCookiesSold = event.target.avgCookiesSold.value;
 
-  function addNewStore(event) {
-    console.log('inside of event');
-    event.preventDefault();
-    console.log(event.target.storeName.value);
-    var newStoreName = event.target.storeName.value;
-    var newMinCustomers = event.target.minCustomers.value;
-    var newMaxCustomers = event.target.maxCustomers.value;
-    var newAvgCookiesSold = event.target.avgCookiesSold.value;
+  new Store(newStoreName, newMinCustomers, newMaxCustomers, newAvgCookiesSold);
 
-    new Store(newStoreName, newMinCustomers, newMaxCustomers, newAvgCookiesSold);
-
-    storeTable.innerHTML = '';
-    makeHeaderRow();
-    renderAllStores(); 
-    totalCookieFooter();
-  }
+  storeTable.innerHTML = '';
+  makeHeaderRow();
+  renderAllStores();
+  totalCookieFooter();
+}
 
 storeForm.addEventListener('submit', addNewStore);
 alert('The button press worked');
 console.log(addNewStore);
 
 // We need to create our Dog instances
-var firstAndPike = new Store ('First and Pike', 23, 65, 6.3);
-var seaTacAirport = new Store ('SeaTac Airport', 3, 24, 1.2);
-var seattleCenter = new Store ('Seattle Center', 11, 38, 3.7);
-var capitolHill = new Store ('Capitol Hill', 20, 38, 2.3);
-var alki = new Store ('Alki', 2, 16, 4.6);
+var firstAndPike = new Store('First and Pike', 23, 65, 6.3);
+var seaTacAirport = new Store('SeaTac Airport', 3, 24, 1.2);
+var seattleCenter = new Store('Seattle Center', 11, 38, 3.7);
+var capitolHill = new Store('Capitol Hill', 20, 38, 2.3);
+var alki = new Store('Alki', 2, 16, 4.6);
 
 // var table = document.getElementById("stores");
 // var footer = table.createTFoot();
 // var row = footer.insertRow(0);
 // var cell = row.insertCell(0);
 // cell.innerHTML = "<b>Total Cookies Sold</b>";
+function myMap() {
+  var mapOptions = {
+    center: new google.maps.LatLng(47.608013, -122.335167),
+    zoom: 10,
+    mapTypeId: google.maps.MapTypeId.HYBRID
+  }
+  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+} 
 
 makeHeaderRow();
 renderAllStores();
 totalCookieFooter();
+myMap();
