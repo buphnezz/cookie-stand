@@ -4,6 +4,7 @@ h1 {
 
 body {
   background-color: green;
+  margin-inline-end: 100px;
 }
 
 img {
@@ -27,5 +28,10 @@ body div {
     bottom: -875px;
     left: 0%;
     }
+
+#stores {
+  align-content: center;
+
+}
 
 
