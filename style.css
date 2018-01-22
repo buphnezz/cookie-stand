@@ -6,11 +6,6 @@ body {
   background-color: green;
 }
 
-div {
-  position: relative;
-  margin: auto;
-}
-
 img {
     margin: auto;
     width: 50%;
@@ -18,10 +13,19 @@ img {
     padding: 10px;
 }
 
+body img {
+  align-content: center;
+  margin-left: 300px;
+}
+
 h3 {
   align-content: center;
 }
 
-#map {
-  width: 2500px;
-}
+body div {
+  position:fixed;
+    bottom: -875px;
+    left: 0%;
+    }
+
+
