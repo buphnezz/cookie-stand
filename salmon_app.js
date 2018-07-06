@@ -65,7 +65,7 @@ let firstAndPike = {
   avgCookiesSold: 6.3,
 
   numOfCustomers: function () {
-    let avgFirstandPikeCustomers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1) + this.minCustomers);
+    let avgFirstandPikeCustomers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers) + this.minCustomers);
     return avgFirstandPikeCustomers;
   },
 
@@ -87,14 +87,12 @@ let firstAndPike = {
       // 3. append the li to the ul (append the element to the DOM)
       ulEl.appendChild(liEl);
     }
-    //  I want to add this somewhere this.salesPerEachHour[15] = total + ' cookies';
+
   }
 //   minCustomers: ,
 //   maxCustomers: ,
 //   avgCookiesPerCustomer:
 };
-
-
 
 
 // 2.  SeaTac Airport   shop object literal
