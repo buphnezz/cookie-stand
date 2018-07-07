@@ -7,7 +7,8 @@
 //Store the results for each location in a separate array...perhaps as a property of the object representing that location
 //Display the values of each array as unordered lists in the browser
 
-// all shops are open from 6am to 8pm so I made it a global letiable
+// all shops are open from 6am to 8pm so I made it a global variable
+
 let hoursOfOperation = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
 // I'm currently not using minNumberCookies or maxNumberCookies... I used that equation in min/max number of customers instead.  Go ahead and delete both for now.
